@@ -1,25 +1,23 @@
-const wordSearch = (letters, word) => { 
-
-  if (letters.length === 0){ 
-      return false;
+//FUNCTION IMPLEMENTATION
+const wordSearch = (letters, word) => {
+  if (letters.length === 0) {
+    return false;
   } else {
-  const horizontalJoin = letters.map(ls => ls.join(''))  
-  for (const l of horizontalJoin) {
-      if (l.includes(word)) return true
-  }  
-  for (let c = 0; c < letters[0].length; c++) {
-    let newRow = [];
-    for (let r = 0; r < letters.length; r++) {
-      newRow.push(letters[r][c]);
+    const horizontal = letters.map((ls) => ls.join(""));
+    for (const letter of horizontal) {
+      if (letter.includes(word)) return true;
     }
-    newRow = newRow.join('');
-    if (newRow.includes(word)) return true 
+    for (let x = 0; x < letters[0].length; x++) {
+      let vertical = [];
+      for (let y = 0; y < letters.length; y++) {
+        vertical.push(letters[y][x]);
+      }
+      vertical = vertical.join("");
+      if (vertical.includes(word)) return true;
+    }
+    return false;
   }
-  return false; 
-  } 
-}
+};
 
-module.exports = wordSearch 
-
-
-
+//EXPORT MODULE
+module.exports = wordSearch;
